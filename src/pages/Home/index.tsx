@@ -20,7 +20,7 @@ const Home = () => {
                    WebkitBackgroundClip:'text',
                    WebkitTextFillColor:' rgba(255, 255, 255, 0.3)',
                 }
-            }> coding or die</p>
+            }> coding and life</p>
         </div>
     )
 }

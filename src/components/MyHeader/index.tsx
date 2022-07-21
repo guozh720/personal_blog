@@ -13,6 +13,11 @@ const item = [
         label: 'aboutMe',
         component: '/aboutMe',
     },
+    {
+        name:'编程',
+        label:'coding',
+        component:'/coding'
+    },
 ]
 
 const MyHeader = () => {

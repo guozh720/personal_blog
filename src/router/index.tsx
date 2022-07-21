@@ -8,6 +8,7 @@ import NoFoundPage from "../pages/404";
 const AboutMe = lazy(() => import('../pages/Aboutme'))
 const Home = lazy(() => import('../pages/Home'))
 const Login = lazy(() => import('../pages/Login'))
+const Coding = lazy(()=>import('../pages/Coding'))
 
 const routeConfig:RouteObject[] = 
     [
@@ -27,6 +28,10 @@ const routeConfig:RouteObject[] =
                     path:'/aboutMe',
                     element:<AboutMe/>
                 },
+                {
+                    path:'/coding',
+                    element:<Coding/>
+                }
             ]
         },
         {
