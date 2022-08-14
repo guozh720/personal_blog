@@ -1,12 +1,12 @@
-import { asyncUtil } from "../utils/utils";
+import {asyncUtil} from "../utils/utils";
 
-export interface IUserInfo{
-    name:string,
-    age:number,
+export interface IUserInfo {
+    name: string,
+    age: number,
 }
 
-const mockUserInfoJson:IUserInfo={
-    name:'张三',
-    age:5,
+const mockUserInfoJson: IUserInfo = {
+    name: '张三',
+    age: 5,
 }
-export const getUserInfoMockApi = async():Promise<IUserInfo>=>asyncUtil(mockUserInfoJson,1500)
+export const getUserInfoMockApi = async (): Promise<IUserInfo> => asyncUtil(mockUserInfoJson, 1500)
