@@ -41,4 +41,4 @@ const mockCodingArticleData: CodingArticle[] = [
     },
 ];
 
-export const getCodingArticleApi = asyncUtil(mockCodingArticleData, 2000)
+export const getCodingArticleApi:Promise<CodingArticle[]> = asyncUtil(mockCodingArticleData, 2000)
