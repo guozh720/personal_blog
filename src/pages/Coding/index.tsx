@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {getCodingArticleApi, CodingArticle} from "../../mockService/MockCodingArticleService";
 import ReactMarkdown from 'react-markdown'
 import {CodeBlock} from "../../components/CodeBlock";
+import {getArticleListAll} from '../../mockService/MockGetArticleService'
+
 const Coding = () => {
     const [codingArticle, setCodingArticle] = useState<CodingArticle[]>([]);
     const markDownInfo = '## hello'
@@ -16,6 +18,7 @@ const Coding = () => {
     };
     useEffect(() => {
         fnGeCodingArticle().then(() => [])
+        getArticleListAll();
     }, [])
     return (
         <>
