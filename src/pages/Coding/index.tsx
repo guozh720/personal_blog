@@ -16,9 +16,21 @@ const Coding = () => {
             console.error(e);
         }
     };
+    const getArticleData = async () => {
+        const url = 'http://localhost:8081/article/listAll';
+        const params = {};
+        try {
+            const data = await getArticleListAll(url, params);
+            console.log(data);
+        } catch (e) {
+            console.error(e);
+        }
+
+
+    }
     useEffect(() => {
         fnGeCodingArticle().then(() => [])
-        getArticleListAll();
+        getArticleData()
     }, [])
     return (
         <>
