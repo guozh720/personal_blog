@@ -16,7 +16,8 @@
     "react-code-previewer": "^0.2.7",
     "react-dom": "^18.0.0",
     "react-markdown": "^8.0.3",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "react-simplemde-editor": "^5.0.2"
   },
   "devDependencies": {
     "@types/node": "^18.0.1",
