@@ -25,8 +25,6 @@ const Coding = () => {
         } catch (e) {
             console.error(e);
         }
-
-
     }
     useEffect(() => {
         fnGeCodingArticle().then(() => [])
