@@ -4,7 +4,7 @@ import React from "react";
 const App = () => {
     return (
         <>
-            <MyHeader />
+            {/*<MyHeader />*/}
             <Outlet />
         </>
     )

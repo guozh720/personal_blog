@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import {CodeBlock} from "../../components/CodeBlock";
 import {getArticleListAll} from '../../mockService/MockGetArticleService'
 
+import {SimplemdeEditor} from "../../components/SimplemdeEditor";
 const Coding = () => {
     const [codingArticle, setCodingArticle] = useState<CodingArticle[]>([]);
     const markDownInfo = '## hello'
@@ -30,13 +31,31 @@ const Coding = () => {
         fnGeCodingArticle().then(() => [])
         getArticleData()
     }, [])
+    // const [codingArticle, setCodingArticle] = useState<CodingArticle[]>([]);
+    // const markDownInfo = '## hello'
+    // const fnGeCodingArticle = async () => {
+    //     try {
+    //         const data = await getCodingArticleApi;
+    //         console.log('get CodingArticle success');
+    //         setCodingArticle(data);
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // };
+    // useEffect(() => {
+    //     fnGeCodingArticle().then(() => [])
+    // }, [])
     return (
         <>
             这是coding界面
-            <ReactMarkdown children={markDownInfo}/>
-            {codingArticle.length > 0 ? codingArticle[0].title : ''}
-            <hr/>
-            <CodeBlock/>
+            {/*<ReactMarkdown children={markDownInfo}/>*/}
+            {/*{codingArticle.length > 0 ? codingArticle[0].title : ''}*/}
+            {/*<hr/>*/}
+            {/*<CodeBlock/>*/}
+            <div style={{width:'500px',height:'400px'}}>
+                <SimplemdeEditor/>
+            </div>
+            
         </>
     )
 }
