@@ -1,61 +1,36 @@
-import React, {useEffect, useState} from "react";
-import {getCodingArticleApi, CodingArticle} from "../../mockService/MockCodingArticleService";
-import ReactMarkdown from 'react-markdown'
-import {CodeBlock} from "../../components/CodeBlock";
-import {getArticleListAll} from '../../mockService/MockGetArticleService'
+import React, {useState} from "react";
 
-import {SimplemdeEditor} from "../../components/SimplemdeEditor";
+import {SimpleMdEditor} from "../../components/SimpleMdEditor";
+
 const Coding = () => {
-    const [codingArticle, setCodingArticle] = useState<CodingArticle[]>([]);
-    const markDownInfo = '## hello'
-    const fnGeCodingArticle = async () => {
-        try {
-            const data = await getCodingArticleApi;
-            console.log('get CodingArticle success');
-            setCodingArticle(data);
-        } catch (e) {
-            console.error(e);
-        }
-    };
-    const getArticleData = async () => {
-        const url = 'http://localhost:8081/article/listAll';
-        const params = {};
-        try {
-            const data = await getArticleListAll(url, params);
-            console.log(data);
-        } catch (e) {
-            console.error(e);
-        }
+    const [editorValue, setEditorValue] = useState('start write your own article');
+    const getEditValue=(data:string)=>{
+        setEditorValue(data);
     }
-    useEffect(() => {
-        fnGeCodingArticle().then(() => [])
-        getArticleData()
-    }, [])
-    // const [codingArticle, setCodingArticle] = useState<CodingArticle[]>([]);
-    // const markDownInfo = '## hello'
-    // const fnGeCodingArticle = async () => {
-    //     try {
-    //         const data = await getCodingArticleApi;
-    //         console.log('get CodingArticle success');
-    //         setCodingArticle(data);
-    //     } catch (e) {
-    //         console.error(e);
-    //     }
-    // };
-    // useEffect(() => {
-    //     fnGeCodingArticle().then(() => [])
-    // }, [])
+    const fnSubmit = () => {
+
+    }
     return (
         <>
             这是coding界面
-            {/*<ReactMarkdown children={markDownInfo}/>*/}
-            {/*{codingArticle.length > 0 ? codingArticle[0].title : ''}*/}
-            {/*<hr/>*/}
-            {/*<CodeBlock/>*/}
-            <div style={{width:'500px',height:'400px'}}>
-                <SimplemdeEditor/>
+            <div style={{display: 'flex'}}>
+                <div style={{width: '500px', height: '500px', display: 'inline-block'}}>
+                    <SimpleMdEditor initValue={editorValue} getValue={getEditValue}/>
+                </div>
+                <button style={{
+                    height: "50px",
+                    width: '100px',
+                    backgroundColor: '#4CAF50',
+                    border: 'none',
+                    color: "white",
+                    padding: '15px 32px',
+                    textAlign: "center",
+                    textDecoration: "none",
+                    display: 'inline-block',
+                    fontSize: '16px',
+                }} onClick={() => fnSubmit()}>提交
+                </button>
             </div>
-            
         </>
     )
 }
