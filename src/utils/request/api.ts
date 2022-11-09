@@ -19,21 +19,25 @@ axios.interceptors.response.use(response => {
 
 class ApiRequest {
 
-    private readonly baseUrl: string ;
+    private readonly baseUrl: string;
+    private path: string;
     private httpMethod: string;
 
     constructor(baseUrl: string) {
         this.baseUrl = baseUrl;
+        this.path = "/";
         this.httpMethod = 'post';
     }
 
-    get(data: any) {
+    get(path: string, data?: any) {
         this.httpMethod = "get";
+        this.path = path;
         return this.callApi(data);
     }
 
-    post(data: any) {
+    post(path: string, data: any) {
         this.httpMethod = 'post';
+        this.path = path;
         return this.callApi(data);
     }
 
@@ -65,13 +69,10 @@ class ApiRequest {
             canvas: true,
         }).get();
         let timestamp = Date.now() * 1000 + new Date().getMilliseconds();
-        if (!data.hasOwnProperty('callType')) {
-            data.callType = 'post';
-        }
         //配置
         return {
-            method: data.callType,
-            url: this.baseUrl,
+            method: this.httpMethod,
+            url: this.baseUrl + this.path,
             data: {
                 timestamp: String(timestamp),
                 "deviceId": String(deviceId),

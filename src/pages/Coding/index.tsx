@@ -1,15 +1,23 @@
 import React, {useState} from "react";
 
 import {SimpleMdEditor} from "../../components/SimpleMdEditor";
+import {addArticle} from '../../service/article'
 
 const Coding = () => {
     const [editorValue, setEditorValue] = useState('start write your own article');
-    const getEditValue=(data:string)=>{
+    const getEditValue = (data: string) => {
         setEditorValue(data);
     }
-    const fnSubmit = () => {
-
+    const fnSubmit = async () => {
+        console.log('fnSubmit')
+        try {
+            const data = await addArticle()
+            console.log(data)
+        } catch (e) {
+            console.error(e);
+        }
     }
+
     return (
         <>
             这是coding界面
