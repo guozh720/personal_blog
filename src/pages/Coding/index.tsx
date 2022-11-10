@@ -11,10 +11,10 @@ const Coding = () => {
     const fnSubmit = async () => {
         console.log('fnSubmit')
         try {
-            const author = "郭1234";
-            const title = "标题";
-            const data = await addArticle({author,title});
-            console.log(data)
+            // const author = "郭1234";
+            // const title = "标题";
+            // const data = await addArticle({author,title});
+            // console.log(data)
         } catch (e) {
             console.error(e);
         }
@@ -25,7 +25,7 @@ const Coding = () => {
             这是coding界面
             <div style={{display: 'flex'}}>
                 <div style={{width: '500px', height: '500px', display: 'inline-block'}}>
-                    <SimpleMdEditor initValue={editorValue} getValue={getEditValue}/>
+                    <SimpleMdEditor inputValue={editorValue} getValue={getEditValue}/>
                 </div>
                 <button style={{
                     height: "50px",

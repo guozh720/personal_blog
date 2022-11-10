@@ -2,9 +2,7 @@ import React, {useEffect, useMemo, useState} from "react";
 import SimpleMDEReact from "react-simplemde-editor";
 import 'easymde/dist/easymde.min.css';
 
-const SimpleMdEditor = (props: { initValue: string, getValue: Function }) => {
-    const {initValue, getValue} = props;
-    const [content, setContent] = useState(initValue ?? 'init value')
+const SimpleMdEditor = ({inputValue, getValue}: { inputValue: string | null | undefined, getValue: Function }) => {
     const delay = 1000;
     const anOptions = useMemo(() => {
         return {
@@ -15,15 +13,14 @@ const SimpleMdEditor = (props: { initValue: string, getValue: Function }) => {
             },
         };
     }, [delay]);
-
-    useEffect(() => {
-        //TODO onChange函数的时候需要做个防抖
-        getValue(content);
-    }, [content])
+    const saveEditorValue = (value: string) => {
+        getValue(value);
+    }
     return (
         <div>
             <h4>AutoSaving after refresh (wait 1000ms after change)</h4>
-            <SimpleMDEReact id={"demo"} value={content} options={anOptions} onChange={setContent}/>
+            <SimpleMDEReact id={"demo"} value={inputValue ?? 'init value'} options={anOptions}
+                            onChange={saveEditorValue}/>
         </div>
     );
 }
