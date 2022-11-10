@@ -1,7 +1,10 @@
 import Request from "../../utils/request/apiService";
 
-export const addArticle = () => {
-    return Request.post("article/add", {});
+export const addArticle = (param: {
+    author: string,
+    title: string,
+}) => {
+    return Request.post("article/add", param);
 };
 
 export const listAllArticle = () => {

@@ -11,7 +11,9 @@ const Coding = () => {
     const fnSubmit = async () => {
         console.log('fnSubmit')
         try {
-            const data = await addArticle()
+            const author = "郭1234";
+            const title = "标题";
+            const data = await addArticle({author,title});
             console.log(data)
         } catch (e) {
             console.error(e);

@@ -64,7 +64,7 @@ class ApiRequest {
     }
 
     getOptions(data: any) {
-        const paramsJson = data.params;
+        const paramsJson = data;
         const deviceId = new Fingerprint({
             canvas: true,
         }).get();
@@ -73,10 +73,15 @@ class ApiRequest {
         return {
             method: this.httpMethod,
             url: this.baseUrl + this.path,
+            params: {
+                ...paramsJson,
+            },
+            headers: {
+                'Content-Type': 'application/json',
+            },
             data: {
                 timestamp: String(timestamp),
                 "deviceId": String(deviceId),
-                params: paramsJson,
             },
             transformRequest: function (requestData: any) {
                 return JSON.stringify(requestData);
