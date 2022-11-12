@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 import {SimpleMdEditor} from "../../components/SimpleMdEditor";
-import {addArticle} from '../../service/article'
+import {addArticle,listAllArticle} from '../../service/article'
 
 const Coding = () => {
     const [editorValue, setEditorValue] = useState('start write your own article');
@@ -11,10 +11,12 @@ const Coding = () => {
     const fnSubmit = async () => {
         console.log('fnSubmit')
         try {
-            // const author = "郭1234";
-            // const title = "标题";
-            // const data = await addArticle({author,title});
-            // console.log(data)
+            const author = "test-post";
+            const title = "标题";
+            const content=editorValue;
+            // const data = await addArticle({author,title,content});
+            const data = await listAllArticle({author,title,content});
+            console.log(data)
         } catch (e) {
             console.error(e);
         }

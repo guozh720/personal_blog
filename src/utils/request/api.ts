@@ -32,13 +32,13 @@ class ApiRequest {
     get(path: string, data?: any) {
         this.httpMethod = "get";
         this.path = path;
-        return this.callApi(data);
+        return this.callApi({getData:data});
     }
 
     post(path: string, data: any) {
         this.httpMethod = 'post';
         this.path = path;
-        return this.callApi(data);
+        return this.callApi({postData:data});
     }
 
     callApi(obj: any, httpDefaultOpts: any = undefined) {
@@ -64,7 +64,8 @@ class ApiRequest {
     }
 
     getOptions(data: any) {
-        const paramsJson = data;
+        // const paramsJson = data;
+        const {getData,postData} = data;
         const deviceId = new Fingerprint({
             canvas: true,
         }).get();
@@ -74,15 +75,14 @@ class ApiRequest {
             method: this.httpMethod,
             url: this.baseUrl + this.path,
             params: {
-                ...paramsJson,
+                timestamp: String(timestamp),
+                "deviceId": String(deviceId),
+                ...getData,
             },
             headers: {
                 'Content-Type': 'application/json',
             },
-            data: {
-                timestamp: String(timestamp),
-                "deviceId": String(deviceId),
-            },
+            data: {...postData,},
             transformRequest: function (requestData: any) {
                 return JSON.stringify(requestData);
             },
