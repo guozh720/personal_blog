@@ -1,5 +1,4 @@
-import ApiRequest from "./api";
-import config from '../../config/index';
+import ApiRequest, {baseUrl} from "./api";
 
-const axios = new ApiRequest(config.baseUrl);
+const axios = new ApiRequest(baseUrl);
 export default axios;
