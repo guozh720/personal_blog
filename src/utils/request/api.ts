@@ -1,3 +1,7 @@
+import config from "@/config";
+export const baseUrl = process.env.NODE_ENV ==='development' ? config.url.dev : config.url.pro;
+
+
 import axios from "axios";
 // @ts-ignore
 import Fingerprint from "fingerprintjs";

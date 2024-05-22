@@ -1,3 +1,6 @@
 export default {
-    baseUrl:"http://localhost:8081/"
+    url:{
+        dev:'',
+        pro:'http://localhost:8081'
+    }
 }

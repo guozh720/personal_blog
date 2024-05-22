@@ -8,11 +8,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/mockjs": "^1.0.10",
     "antd": "^4.21.5",
     "axios": "^0.27.2",
     "fingerprintjs": "^0.5.3",
     "highlight.js": "^11.6.0",
     "marked": "^4.0.18",
+    "mockjs": "^1.1.0",
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-code-previewer": "^0.2.7",

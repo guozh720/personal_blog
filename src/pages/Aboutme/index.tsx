@@ -1,4 +1,3 @@
-import react from 'react'
 import { useEffect, useState, useMemo } from 'react';
 import { getUserInfoMockApi } from '../../mockService/MockUserInfoService'
 import { IUserInfo } from '../../mockService/MockUserInfoService';
