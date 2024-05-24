@@ -1,6 +1,6 @@
 export default {
     url:{
-        dev:'',
-        pro:'http://localhost:8081'
+        dev:'http://localhost:8081/',
+        pro:''
     }
 }

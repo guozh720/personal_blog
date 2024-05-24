@@ -1,6 +1,7 @@
 import React, {CSSProperties, useEffect, useState} from "react";
-import {getArticleListAll} from '../../mockService/MockGetArticleService'
+import {getArticleListAll} from '@/mockService/MockGetArticleService'
 import {baseUrl} from "@/utils/request/api";
+import {listAllBlog} from "@/service/blog";
 
 
 interface ArticleCardProps {
@@ -11,7 +12,7 @@ interface ArticleCardProps {
 }
 
 const ArticleCard = (props: ArticleCardProps) => {
-    const {title, description, onClick, children} = props;
+    const {title, description, onClick,} = props;
     const cardStyle = {
         backgroundColor: '#fff',
         border: '1px solid #ddd',
@@ -89,10 +90,19 @@ const ArticleList: React.FC<ArticleListProps> = (props: ArticleListProps) => {
         </div>
     )
 }
+interface BlogDetail {
+    id: number,
+    blogTitle:string,
+    blogContent:string,
+    coverImage:string,
+    blogStatus:number,
+    createTime:string,
+    updateTime:string,
+}
 
 const Coding = () => {
     const [selectedBlog, setSelectedBlog] = useState<Article | null>(null);
-
+    const [blogDetails, setBlogDetails] = useState<BlogDetail[]>([]);
     const blogs: Article[] = [
         {id: 1, title: 'First Blog', description: 'This is the first blog', content: 'Content of the first blog'},
         {id: 2, title: 'Second Blog', description: 'This is the second blog', content: 'Content of the second blog'},
@@ -108,7 +118,20 @@ const Coding = () => {
         const blog = blogs.find((b) => b.id === id) || null;
         setSelectedBlog(blog);
     };
-
+    const getBlogData = async () => {
+        try {
+            const data = await listAllBlog();
+            console.log(data)
+            setBlogDetails(data)
+        }catch (e){
+            console.error(e);
+        }
+    }
+    useEffect(()=>{
+        console.log(123)
+    },[blogDetails])
+    
+    
     const getArticleData = async () => {
         const url = baseUrl + '/article/listAll';
         const params = {};
@@ -120,7 +143,8 @@ const Coding = () => {
         }
     }
     useEffect(() => {
-        getArticleData()
+        // getArticleData();
+        getBlogData().then();
     }, [])
     return (
         <>

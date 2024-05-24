@@ -17,7 +17,7 @@ const routeConfig: RouteObject[] =
             children: [
                 {
                     index: true,
-                    element: <Home/>
+                    element: <Coding/>
                 },
                 {
                     path: '/home',
