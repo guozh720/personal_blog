@@ -8,6 +8,7 @@ const AboutMe = lazy(() => import('../pages/Aboutme'))
 const Home = lazy(() => import('../pages/Home'))
 const Login = lazy(() => import('../pages/Login'))
 const Coding = lazy(() => import('../pages/Coding'))
+const BlogContent = lazy(() => import('../pages/BlogContent'))
 
 const routeConfig: RouteObject[] =
     [
@@ -30,6 +31,10 @@ const routeConfig: RouteObject[] =
                 {
                     path: '/coding',
                     element: <Coding/>
+                },
+                {
+                    path: 'blog/:id',
+                    element: <BlogContent />
                 }
             ]
         },
